@@ -18,6 +18,7 @@ while True:
             existing_todo = todos[int(number) - 1]
             new_todo = input("Enter a new ToDo: ")
             todos[int(number) - 1] = new_todo
+        # after complete, it will remove from the todo list.
         case 'complete':
              number2 = int(input("Number of the ToDo to complete: "))
              todos.pop(number2 - 1)
