@@ -4,35 +4,55 @@ while True:
 
     match user_action:
         case 'add':
-            todo = input("Enter a ToDo: ") + '\n'
+            todo= input("Enter a ToDo: ") + '\n'
 
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             todos.append(todo)
-            
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
         case 'show' | 'display':
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             for index, item in enumerate(todos):
+                item = item.strip('\n')
                 print(f"{index + 1} -{item}")
         case 'exit':
             break
         case 'edit':
-            number = input("Number of the ToDo to edit: ")
-            existing_todo = todos[int(number) - 1]
+            number = int(input("Number of the ToDo to edit: "))
+            number = number - 1
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             new_todo = input("Enter a new ToDo: ")
-            todos[int(number) - 1] = new_todo
+            todos[number] = new_todo + '\n'
+
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
         # after complete, it will remove from the todo list.
         case 'complete':
              number2 = int(input("Number of the ToDo to complete: "))
-             todos.pop(number2 - 1)
+
+             with open('todos.txt', 'r') as file:
+                 todos = file.readlines()
+
+             index = number2 - 1
+             todo_to_remove = todos[index].strip('\n')
+             todos.pop(index)
+
+             with open('todos.txt', 'w') as file:
+                 file.writelines(todos)
+
+             message = f"ToDo {todo_to_remove} was removed from the list."
+             print(message)
+
         case whatever:
             print('You entered an unknown command!!')
 
