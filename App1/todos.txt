@@ -1,5 +1,4 @@
 clean
-play
+play basketball
 study
 watch movie
-meet
