@@ -2,3 +2,4 @@ clean
 play basketball
 study
 watch movie
+swimming
