@@ -22,27 +22,35 @@ while True:
         break
 
     elif user_action.startswith('edit'):
-        number = int(user_action[5:])
-        number = number - 1
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
-        new_todo = input("Enter a new ToDo: ")
-        todos[number] = new_todo + '\n'
-        with open('todos.txt', 'w') as file:
-            file.writelines(todos)
+        try:
+            number = int(user_action[5:])
+            number = number - 1
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+            new_todo = input("Enter a new ToDo: ")
+            todos[number] = new_todo + '\n'
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+        except ValueError:
+            print("Your command is not valid.")
+            continue
 
     # after complete, it will remove from the todo list.
     elif user_action.startswith('complete'):
-         number = int(user_action[9:])
-         with open('todos.txt', 'r') as file:
-             todos = file.readlines()
-         index = number - 1
-         todo_to_remove = todos[index].strip('\n')
-         todos.pop(index)
-         with open('todos.txt', 'w') as file:
-             file.writelines(todos)
-         message = f"ToDo {todo_to_remove} was removed from the list."
-         print(message)
+        try:
+             number = int(user_action[9:])
+             with open('todos.txt', 'r') as file:
+                 todos = file.readlines()
+             index = number - 1
+             todo_to_remove = todos[index].strip('\n')
+             todos.pop(index)
+             with open('todos.txt', 'w') as file:
+                 file.writelines(todos)
+             message = f"ToDo {todo_to_remove} was removed from the list."
+             print(message)
+        except IndexError:
+            print("There is no item with this number.")
+            continue
 
     else:
         print('Sorry, Command is not valid!!!')
