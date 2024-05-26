@@ -1,5 +1,2 @@
-clean
-play basketball
-study
-watch movie
-swimming
+clean the table
+Meet with Ryan
