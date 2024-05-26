@@ -1,7 +1,7 @@
 def get_todos():
-    with open('todos.txt', 'r') as file:
-        todos = file.readlines()
-    return todos
+    with open('todos.txt', 'r') as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
 
 
 while True:
@@ -14,7 +14,7 @@ while True:
         todos = get_todos()
 
         todos.append(todo + '\n')
-        
+
         with open('todos.txt', 'w') as file:
             file.writelines(todos)
 
