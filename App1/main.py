@@ -1,10 +1,16 @@
 def get_todos(filepath='todos.txt'):
+    """
+    read a text file and return the list of to-do item.
+    """
     with open(filepath, 'r') as file_local:
         todos_local = file_local.readlines()
     return todos_local
 
 
 def write_todos(todos_arg, filepath='todos.txt'):
+    """
+    write the to-do items list in the text file.
+    """
     with open(filepath, 'w') as file_local:
         file_local.writelines(todos_arg)
 
@@ -43,7 +49,6 @@ while True:
             print("Your command is not valid.")
             continue
 
-    # after complete, it will remove from the todo list.
     elif user_action.startswith('complete'):
         try:
             number = int(user_action[9:])
@@ -62,4 +67,4 @@ while True:
 
     else:
         print('Sorry, Command is not valid!!!')
-print('Bye!')
+print('Thanks for using, Bye!')
