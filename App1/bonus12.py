@@ -1,15 +1,22 @@
 feet_inches = input("enter feet and inches: ")
 
 
-def convert(feet_inches):
+def parse(feet_inch):
     part = feet_inches.split(" ")
     feet = float(part[0])
-    inch = float(part[1])
-    meter = feet * 0.3048 + inch * 0.0254
-    return meter
+    inches = float(part[1])
+    return {"feet": feet, "inches": inches}
 
 
-result = convert(feet_inches)
+def convert(feet, inches):
+    meters = feet * 0.3048 + inches * 0.0254
+    return meters
+
+
+parse = parse(feet_inches)
+result = convert(parse['feet'], parse['inches'])
+
+print(f"{parse['feet']} feet and {parse['inches']} inches is equal to {result} meters.")
 print(f"kid is {result} meters")
 
 if result < 150:
