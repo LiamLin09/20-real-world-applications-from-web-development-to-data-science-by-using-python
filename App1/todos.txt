@@ -1,5 +1,5 @@
-make pizza
-eat bread
+make new pizza
+test for edit function
 wash hand
 meet Ryan tmr
 play flag football
